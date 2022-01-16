@@ -1,6 +1,6 @@
 :root {
   --bg-color: 21, 19, 22;
-  --bg-time: 30s;
+  --bar-time: 10s;
 }
 
 body {
@@ -10,13 +10,14 @@ body {
     rgba(var(--bg-color), 0.94) 50%,
     rgba(var(--bg-color), 0.94) 75%
   );
+  cursor: url("/cursors/Precision.cur"), crosshair;
   background-size: 12px 12px;
   height: 100vh;
   overflow: hidden;
   display: flex;
   justify-content: center;
   align-items: center;
-  animation: bg var(--bg-time) linear infinite;
+  animation: bg var(--bar-time) linear infinite;
 }
 
 .invertBar, .fixInvertBar {
@@ -27,28 +28,36 @@ body {
   height: 6px;
   background-color: rgb(var(--bg-color));
   filter: invert(1);
-  animation: bar var(--bg-time) linear infinite;
-  content: "";
+  animation: bar var(--bar-time) linear infinite;
 }
 
 .invertBar {
   mix-blend-mode: exclusion;
-  z-index: 2;
-}
-
-.fixInvertBar {
-  z-index: -1;
 }
 
 body::after {
-  box-shadow: inset 0 0 10em rgba(0,0,0,1);
+  box-shadow: inset 0 0 10rem black;
   position: absolute;
   top: 0;
   left: 0;
   width: 100vw;
   height: 100vh;
-  z-index: 3;
+  pointer-events: none;
   content: "";
+}
+
+.line {
+  font-family: 'Libre Barcode 39 Text', cursive;
+  font-size: 90px;
+}
+
+.glitch {
+  position: relative;
+  color: rgba(255,255,255,1.0);
+  cursor: url("/cursors/Help.cur"), help;
+}
+
+.glitch:hover {
 }
 
 @keyframes bar {
@@ -76,16 +85,6 @@ body::after {
   100% {
     background-position-y: 100%;
   }
-}
-
-.line {
-  font-family: 'Libre Barcode 39 Text', cursive;
-  font-size: 90px;
-}
-
-.glitch {
-  position: relative;
-  color: rgba(255,255,255,1.0);
 }
 
 .line:not(:first-child) {

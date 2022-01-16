@@ -5,3 +5,7 @@ function glitchText() {
     glitchRef.innerHTML += "<div class='line'>wyspr.xyz</div>";
   }
 }
+
+function init() {
+  glitchText();
+}

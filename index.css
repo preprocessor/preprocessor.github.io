@@ -1,6 +1,6 @@
 :root {
-  /* --bg-color: 31, 28, 33; */
   --bg-color: 21, 19, 22;
+  --bg-time: 30s;
 }
 
 body {
@@ -16,29 +16,38 @@ body {
   display: flex;
   justify-content: center;
   align-items: center;
-  animation: bg 50s linear infinite;
+  animation: bg var(--bg-time) linear infinite;
 }
 
-body::before {
+.invertBar, .fixInvertBar {
   position: absolute;
   top: 0;
   left: 0;
   width: 100vw;
-  height: 10vh;
-  /* z-index: 1; */
-  content: "";
+  height: 6px;
   background-color: rgb(var(--bg-color));
-  animation: bar 10s linear infinite;
+  filter: invert(1);
+  animation: bar var(--bg-time) linear infinite;
+  content: "";
+}
+
+.invertBar {
+  mix-blend-mode: exclusion;
+  z-index: 2;
+}
+
+.fixInvertBar {
+  z-index: -1;
 }
 
 body::after {
-  box-shadow: inset 0 0 10em rgba(0,0,0,0.75);
+  box-shadow: inset 0 0 10em rgba(0,0,0,1);
   position: absolute;
   top: 0;
   left: 0;
   width: 100vw;
   height: 100vh;
-  z-index: 2;
+  z-index: 3;
   content: "";
 }
 
@@ -48,6 +57,15 @@ body::after {
   }
   100% {
     top: 100%;
+  }
+}
+
+@keyframes noise {
+  from {
+    background-size: 100% 100%;
+  }
+  to {
+    background-size: 200% 200%;
   }
 }
 

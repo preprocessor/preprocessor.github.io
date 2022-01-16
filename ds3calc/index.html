@@ -1,1 +1,28 @@
-hello
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <title>DS3 Level Calculator</title>
+    <meta name="description" content="">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Cormorant+SC">
+    <link rel="stylesheet" href="ds3.css">
+    <script type="text/javascript" src="ds3.js"></script>
+  </head>
+  <body>
+    <h1>Dark Souls 3 Level Calculator</h1>
+    <h4>by wyspr</h4>
+    <form autocomplete="off">
+      <input placeholder="Current Level" type='text' class="textBox" id='startLvl' />
+      <input placeholder="Final Level"   type='text' class="textBox" id='goalLvl' />
+      <button type="button" onClick='tableGen()'>Calculate</button>
+    </form>
+    <table id='daTable' style="display: none;">
+      <tr>
+        <th>Level</th>
+        <th>Souls Required</th>
+      </tr>
+    </table>
+  </body>
+</html>

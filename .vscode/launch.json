@@ -6,7 +6,7 @@
           "type": "firefox",
           "request": "launch",
           "reAttach": true,
-          "file": "${workspaceFolder}/${fileBasenameNoExtension}.html",
+          "file": "${fileDirname}/${fileBasenameNoExtension}.html",
           "reloadOnChange": "${workspaceFolder}/**/*.*"
       }
   ]

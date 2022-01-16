@@ -1,0 +1,124 @@
+:root {
+  --bg-color: rgb(20, 20, 20);
+  --body-text-color: rgb(180, 178, 176);
+  --title-color: rgb(216, 190, 140);
+  --subtitle-color: rgb(140, 10, 10);
+  --table-main-border: rgb(60, 60, 60);
+  --table-alt-border: rgb(171, 150, 111);
+  --hover-bg: rgba(199, 199, 199, 0.4);
+  --alt-bg: rgb(34, 34, 34);
+}
+
+
+html, tr:last-of-type td {
+  font-family: 'Cormorant SC', serif;
+}
+
+body {
+  align-items: center;
+  background-color: var(--bg-color);
+  color: var(--body-text-color);
+  display: flex;
+  flex-direction: column;
+}
+
+h1 {
+  color: var(--title-color);
+  margin-bottom: 0;
+  white-space: nowrap;
+}
+
+h4 {
+  color: var(--subtitle-color);
+  margin-top: 0;
+}
+
+form {
+  display: flex;
+  margin-bottom: 20px;
+  width: 90%;
+  min-height: 40px;
+}
+
+table {
+  border-spacing: 0;
+  font-size: 14px;
+  margin-bottom: 30px;
+  border: 2px solid var(--table-alt-border);
+}
+
+td, th {
+  border: 0px solid var(--table-main-border);
+  padding: 10px 20px;
+  text-align: center;
+  vertical-align: middle;
+  width: 50%;
+}
+
+th {
+  font-size: 18px;
+  border-bottom: 1px solid var(--table-alt-border);
+}
+
+th:last-of-type {
+  border-left-width: 1px;
+}
+
+tr:last-of-type td { 
+  border-top: 1px solid var(--table-alt-border);
+}
+
+td {
+  border-width: 0 0 1px 1px;
+}
+
+td:first-of-type {
+  border-left-width: 0;
+}
+
+tr:nth-last-of-type(2) td {
+  border-bottom: none;
+}
+
+tr:last-of-type {
+  color: var(--title-color);
+  font-size: 18px;
+  font-weight: bold;
+}
+
+tr:nth-child(2n+1) {
+  background-color: var(--alt-bg);
+}
+
+tr:not(:first-child):hover {
+  background-color: var(--hover-bg);
+}
+
+input, td {
+  font-family: Arial, sans-serif;
+}
+
+span {
+  bottom: 1px;
+  padding: 0 2px 0 4px;
+  position: relative;
+}
+
+button, input {
+  background-color: rgb(56, 52, 48);
+  color: gray;
+  border: 1px solid gray;
+  padding: 6px 12px;
+  flex: 1 0 0;
+  text-align: center;
+}
+
+#startLvl {
+  border-right: none;
+}
+
+button {
+  border-left: none;
+  text-decoration: underline;
+  color: lightgrey;
+}

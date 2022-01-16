@@ -64,7 +64,7 @@ function tableGen() {
 }
 
 function enterSubmit () {
-  document.querySelectorAll('.textBox').forEach(item => {
+  document.querySelectorAll('input').forEach(item => {
     item.addEventListener('keyup', (e) => {
       if (e.key === 'Enter') {tableGen();}
     })

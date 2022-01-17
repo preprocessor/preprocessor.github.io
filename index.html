@@ -1,18 +1,28 @@
 <!DOCTYPE html>
 <html>
   <head>
+    <title>wyspr.xyz</title>
     <meta charset="utf-8">
     <link href="index.css" rel="stylesheet" type="text/css" />
     <link href="https://fonts.googleapis.com/css2?family=Libre+Barcode+39+Text&display=swap" rel="stylesheet" type="text/css" />
     <script type="text/javascript" src="index.js"></script>
-    <title>wyspr.xyz</title>
     <meta name="description" content="">
     <meta name="viewport" content="width=device-width, initial-scale=1">
   </head>
   <body onload="init()">
     <div class="fixInvertBar"></div>
-    <div class="glitch" style="cursor: pointer;"></div>
+    <div class="content">
+      <div class="glitch"></div>
+      <div class="terminal" style="display: none;">
+        <div class="titleBar">Shell</div>
+        <div class="prompt">tree ~/home/links</div>
+        <div class="tree">
+          <div class="treeItem"><a href="./ds3calc/">ds3_level_calculator</a></div>
+        </div>
+        <div class="prompt blinking"></div>
+      </div>
+    </div>
+    <div class="scanlines"></div>
     <div class="invertBar"></div>
-    <!-- <div class="vignette"></div> -->
   </body>
 </html>

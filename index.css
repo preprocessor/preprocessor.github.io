@@ -3,36 +3,36 @@
   --bar-time: 10s;
 }
 
+html {
+  cursor: url("./cursors/Precision.cur"), crosshair;
+}
+
 body {
-  background: repeating-linear-gradient(0deg,
-    rgb(var(--bg-color)) 25%,
-    rgb(var(--bg-color)) 50%,
-    rgba(var(--bg-color), 0.94) 50%,
-    rgba(var(--bg-color), 0.94) 75%
-  );
-  cursor: url("/cursors/Precision.cur"), crosshair;
-  background-size: 12px 12px;
+  margin: 0;
+  width: 100vw;
   height: 100vh;
   overflow: hidden;
   display: flex;
   justify-content: center;
   align-items: center;
-  animation: bg var(--bar-time) linear infinite;
+  background-color: rgb(var(--bg-color));
 }
 
-.invertBar, .fixInvertBar {
+.scanlines {
+  background: repeating-linear-gradient(0deg,
+    transparent 25%,
+    transparent 50%,
+    rgba(255, 255, 255, 0.06) 50%,
+    rgba(255, 255, 255, 0.06) 75%
+  );
   position: absolute;
   top: 0;
   left: 0;
+  background-size: 12px 12px;
+  height: 100vh;
   width: 100vw;
-  height: 6px;
-  background-color: rgb(var(--bg-color));
-  filter: invert(1);
-  animation: bar var(--bar-time) linear infinite;
-}
-
-.invertBar {
-  mix-blend-mode: exclusion;
+  pointer-events: none;
+  animation: bg var(--bar-time) linear infinite;
 }
 
 body::after {
@@ -46,6 +46,23 @@ body::after {
   content: "";
 }
 
+.invertBar, .fixInvertBar {
+  margin-top: 3px;
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100vw;
+  height: 12px;
+  background-color: rgb(var(--bg-color));
+  filter: invert(1);
+  animation: bar 10.6s linear infinite;
+  pointer-events: none;
+}
+
+.invertBar {
+  mix-blend-mode: exclusion;
+}
+
 .line {
   font-family: 'Libre Barcode 39 Text', cursive;
   font-size: 90px;
@@ -54,35 +71,23 @@ body::after {
 .glitch {
   position: relative;
   color: rgba(255,255,255,1.0);
-  cursor: url("/cursors/Help.cur"), help;
-}
-
-.glitch:hover {
+  cursor: url("./cursors/Help.cur"), help;
 }
 
 @keyframes bar {
-  0% {
+  from {
     top: 0;
   }
-  100% {
+  to {
     top: 100%;
   }
 }
 
-@keyframes noise {
-  from {
-    background-size: 100% 100%;
-  }
-  to {
-    background-size: 200% 200%;
-  }
-}
-
 @keyframes bg {
-  0% {
+  from {
     background-position-y: 0;
   }
-  100% {
+  to {
     background-position-y: 100%;
   }
 }

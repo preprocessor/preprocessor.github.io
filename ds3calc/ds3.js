@@ -42,7 +42,7 @@ function tableWipe(table) {
 }
 
 function tableGen() {
-  // using parseInt() removes decimals and returns NaN if given a string
+  // using parseInt() strips decimals and returns NaN if given a string
   var start = parseInt(document.getElementById("startLvl").value),
       end   = parseInt(document.getElementById("goalLvl").value),
       tableRef = document.getElementById('daTable');

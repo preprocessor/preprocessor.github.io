@@ -11,16 +11,19 @@
   <body onload="init()">
     <div class="fixInvertBar"></div>
     <div class="content">
-      <div class="glitch"></div>
-      <div class="terminal" style="display: none;">
-        <div class="titleBar">Shell</div>
-        <div class="prompt">tree ~/xyz/pages</div>
-        <div class="tree">
-          <div class="treeHead">&nbsp;┌───────────┐
-                          <br />&nbsp;│<i>~/xyz/pages</i>│
-                          <br />&nbsp;└┬──────────┘</div>
+      <div class="glitch" onclick="openTerminal()"></div>
+      <div class="terminalWrap">
+        <div class="terminal" style="border-color: transparent; background-color: transparent;">
+          <div class="titleBar" >Shell</div>
+          <div class="prompt blinking fuk">tree ~/xyz/pages</div><!-- oh dear god what a bad solution 😅-->
+          <div class="prompt blinking"></div>
+          <div class="tree" >
+            <div class="treeHead">&nbsp;┌───────────┐
+                            <br />&nbsp;│<i>~/xyz/pages</i>│
+                            <br />&nbsp;└┬──────────┘</div>
+          </div>
+          <div class="prompt"></div>
         </div>
-        <div class="prompt blinking"></div>
       </div>
     </div>
     <div class="scanlines"></div>

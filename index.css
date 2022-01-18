@@ -14,6 +14,7 @@
 html {
   cursor: url("./cursors/Precision.cur"), crosshair;
   text-size-adjust: 0%;
+  white-space: nowrap;
 }
 
 body, .content {
@@ -41,13 +42,13 @@ body::after, .invertBar, .fixInvertBar, .scanlines {
 
 body::after {
   height: 100vh;
-  box-shadow: inset 0 0 10rem black;
+  box-shadow: inset 0 0 9vmax #000;
   content: "";
 }
 
 a, a:visited {
   color: inherit;
-  text-decoration: none;;
+  text-decoration: none;
 }
 .line {
   font-family: 'Libre Barcode 39 Text', cursive;
@@ -56,7 +57,7 @@ a, a:visited {
 
 .glitch {
   position: relative;
-  color: white;
+  color: #fff;
   cursor: url("./cursors/Help.cur"), help;
 }
 
@@ -71,18 +72,38 @@ a, a:visited {
   height: 100vh;
   animation: bg var(--bar-time) linear infinite;
 }
+@keyframes bg {
+  from {
+    background-position-y: 0;
+  }
+  to {
+    background-position-y: 100%;
+  }
+}
 
 .invertBar, .fixInvertBar {
-  height: 6px;
+  height: 7px;
   background-color: var(--bg-color);
   filter: invert(1);
   animation: bar 15s linear infinite;
+}
+@keyframes bar {
+  from {
+    top: 0;
+  }
+  to {
+    top: 100%;
+  }
 }
 
 .invertBar {
   mix-blend-mode: exclusion;
 }
 
+.terminalWrap {
+  display: flex;
+  justify-content: center;
+}
 .terminal {
   position: relative;
   color: white;
@@ -90,6 +111,9 @@ a, a:visited {
   font-size: 3vmin;
   background-color: var(--terminal-bg);
   border: 4px solid var(--terminal-border);
+  height: 0%;
+  width: 0%;
+  overflow: hidden;
 }
 
 .titleBar {
@@ -102,10 +126,23 @@ a, a:visited {
 .prompt, .tree {
   padding: 1vmin 1vmin 0 0;
   color: #d0d0d0;
+  opacity: 0;
+}
+
+.blinking, .ran {
+  opacity: 1;
 }
 
 .tree {
   padding-bottom: 1vmin;
+}
+
+.treeHead, .treeItem {
+  color: #9e8cbd;
+}
+
+.treeHead i {
+  color: #fff;
 }
 
 .prompt::before {
@@ -119,54 +156,68 @@ a, a:visited {
   clip-path: polygon(0% 0%, 88% 0%, 100% 50%, 88% 100%, 0% 100%);
 }
 
-.blinking {
-  padding-bottom: 1vmin;
-}
-
 .blinking::after {
+  /* .prompt span::before { */
   content: ".";
   color: transparent;
   background-color: white;
   display: inline-block;
   height: 100%;
   width: 2vmin;
-  animation: blink 1.5s ease infinite;
+  animation: blink 1s ease infinite;
+}
+@keyframes blink {
+  0% {
+    background-color: rgba(255, 255, 255, 1);
+  }
+  50% {
+    background-color: rgba(255, 255, 255, 0);
+  }
+  100% {
+    background-color: rgba(255, 255, 255, 1);
+  }
 }
 
 .treeItem a{
   margin-left: 1vmin;
   cursor: url("./cursors/Pointer.cur"), pointer;
+  color: #C04848;
 }
 
-@keyframes blink {
+.treeItem a:hover {
+  text-decoration: underline dashed;
+}
+
+.terminal.opened {
+  animation: open 1.4s ease 1 forwards;
+}
+@keyframes open {
   0% {
-    opacity: 1;
+    height: 0;
   }
   50% {
-    opacity: 0;
+    height: 100%;
+    width: 0;
   }
   100% {
-    opacity: 1;
+    height: 100%;
+    width: 100%;
   }
 }
 
-@keyframes bar {
-  from {
-    top: 0;
-  }
-  to {
-    top: 100%;
-  }
+.prompt.ran {
+  animation: ran 1s ease 1 forwards;
+}
+@keyframes ran {
+
 }
 
-@keyframes bg {
-  from {
-    background-position-y: 0;
-  }
-  to {
-    background-position-y: 100%;
-  }
-}
+
+
+
+
+
+
 
 .line:not(:first-child) {
   position: absolute;
@@ -174,7 +225,7 @@ a, a:visited {
   left: 0;
 }
 .line:nth-child(1) {
-  animation: clip 3000ms -300ms linear infinite, glitch1 500ms -723ms linear infinite, textShadow 1.6s infinite;;
+  animation: clip 3000ms -300ms linear infinite, glitch1 500ms -723ms linear infinite, textShadow 1.6s infinite;
 }
 @keyframes glitch1 {
   0% {
@@ -201,7 +252,7 @@ a, a:visited {
   }
 }
 .line:nth-child(2) {
-  animation: clip 3000ms -600ms linear infinite, glitch2 500ms -332ms linear infinite, textShadow 1.6s infinite;;
+  animation: clip 3000ms -600ms linear infinite, glitch2 500ms -332ms linear infinite, textShadow 1.6s infinite;
 }
 @keyframes glitch2 {
   0% {
@@ -228,7 +279,7 @@ a, a:visited {
   }
 }
 .line:nth-child(3) {
-  animation: clip 3000ms -900ms linear infinite, glitch3 500ms -458ms linear infinite, textShadow 1.6s infinite;;
+  animation: clip 3000ms -900ms linear infinite, glitch3 500ms -458ms linear infinite, textShadow 1.6s infinite;
 }
 @keyframes glitch3 {
   0% {
@@ -255,7 +306,7 @@ a, a:visited {
   }
 }
 .line:nth-child(4) {
-  animation: clip 3000ms -1200ms linear infinite, glitch4 500ms -162ms linear infinite, textShadow 1.6s infinite;;
+  animation: clip 3000ms -1200ms linear infinite, glitch4 500ms -162ms linear infinite, textShadow 1.6s infinite;
 }
 @keyframes glitch4 {
   0% {
@@ -282,7 +333,7 @@ a, a:visited {
   }
 }
 .line:nth-child(5) {
-  animation: clip 3000ms -1500ms linear infinite, glitch5 500ms -37ms linear infinite, textShadow 1.6s infinite;;
+  animation: clip 3000ms -1500ms linear infinite, glitch5 500ms -37ms linear infinite, textShadow 1.6s infinite;
 }
 @keyframes glitch5 {
   0% {
@@ -309,7 +360,7 @@ a, a:visited {
   }
 }
 .line:nth-child(6) {
-  animation: clip 3000ms -1800ms linear infinite, glitch6 500ms -159ms linear infinite, textShadow 1.6s infinite;;
+  animation: clip 3000ms -1800ms linear infinite, glitch6 500ms -159ms linear infinite, textShadow 1.6s infinite;
 }
 @keyframes glitch6 {
   0% {
@@ -336,7 +387,7 @@ a, a:visited {
   }
 }
 .line:nth-child(7) {
-  animation: clip 3000ms -2100ms linear infinite, glitch7 500ms -769ms linear infinite, textShadow 1.6s infinite;;
+  animation: clip 3000ms -2100ms linear infinite, glitch7 500ms -769ms linear infinite, textShadow 1.6s infinite;
 }
 @keyframes glitch7 {
   0% {
@@ -363,7 +414,7 @@ a, a:visited {
   }
 }
 .line:nth-child(8) {
-  animation: clip 3000ms -2400ms linear infinite, glitch8 500ms -250ms linear infinite, textShadow 1.6s infinite;;
+  animation: clip 3000ms -2400ms linear infinite, glitch8 500ms -250ms linear infinite, textShadow 1.6s infinite;
 }
 @keyframes glitch8 {
   0% {
@@ -515,4 +566,10 @@ a, a:visited {
   100% {
     text-shadow: 2.6208764473832513px 0 1px rgba(0,30,255,0.5), -2.6208764473832513px 0 1px rgba(255,0,80,0.3), 0 0 3px;
   }
+}
+
+.fuk {
+  height: 0;
+  opacity: 0;
+  padding: 0 1vmin 0 0
 }

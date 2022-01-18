@@ -1,13 +1,22 @@
+@import url('https://fonts.googleapis.com/css2?family=Libre+Barcode+39+Text&family=Roboto+Mono&display=swap');
+/* * * * * * * * * * * * * * * * * * * * * * * * *
+ * font-family: 'Libre Barcode 39', cursive;     *
+ * font-family: 'Roboto Mono', monospace; *
+ * * * * * * * * * * * * * * * * * * * * * * * * */
+
 :root {
-  --bg-color: 21, 19, 22;
-  --bar-time: 10s;
+  --bg-color: #100815;
+  --bar-time: 15s;
+  --terminal-bg: #111213;
+  --terminal-border: #323232;
 }
 
 html {
   cursor: url("./cursors/Precision.cur"), crosshair;
+  text-size-adjust: 0%;
 }
 
-body {
+body, .content {
   margin: 0;
   width: 100vw;
   height: 100vh;
@@ -15,7 +24,40 @@ body {
   display: flex;
   justify-content: center;
   align-items: center;
-  background-color: rgb(var(--bg-color));
+  flex-direction: column;
+}
+
+body {
+  background-color: var(--bg-color);
+}
+
+body::after, .invertBar, .fixInvertBar, .scanlines {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100vw;
+  pointer-events: none;
+}
+
+body::after {
+  height: 100vh;
+  box-shadow: inset 0 0 10rem black;
+  content: "";
+}
+
+a, a:visited {
+  color: inherit;
+  text-decoration: none;;
+}
+.line {
+  font-family: 'Libre Barcode 39 Text', cursive;
+  font-size: 20vmin;
+}
+
+.glitch {
+  position: relative;
+  color: white;
+  cursor: url("./cursors/Help.cur"), help;
 }
 
 .scanlines {
@@ -25,53 +67,87 @@ body {
     rgba(255, 255, 255, 0.06) 50%,
     rgba(255, 255, 255, 0.06) 75%
   );
-  position: absolute;
-  top: 0;
-  left: 0;
   background-size: 12px 12px;
   height: 100vh;
-  width: 100vw;
-  pointer-events: none;
   animation: bg var(--bar-time) linear infinite;
 }
 
-body::after {
-  box-shadow: inset 0 0 10rem black;
-  position: absolute;
-  top: 0;
-  left: 0;
-  width: 100vw;
-  height: 100vh;
-  pointer-events: none;
-  content: "";
-}
-
 .invertBar, .fixInvertBar {
-  margin-top: 3px;
-  position: absolute;
-  top: 0;
-  left: 0;
-  width: 100vw;
-  height: 12px;
-  background-color: rgb(var(--bg-color));
+  height: 6px;
+  background-color: var(--bg-color);
   filter: invert(1);
-  animation: bar 10.6s linear infinite;
-  pointer-events: none;
+  animation: bar 15s linear infinite;
 }
 
 .invertBar {
   mix-blend-mode: exclusion;
 }
 
-.line {
-  font-family: 'Libre Barcode 39 Text', cursive;
-  font-size: 90px;
+.terminal {
+  position: relative;
+  color: white;
+  font-family: Courier, monospace;
+  font-size: 3vmin;
+  background-color: var(--terminal-bg);
+  border: 4px solid var(--terminal-border);
 }
 
-.glitch {
-  position: relative;
-  color: rgba(255,255,255,1.0);
-  cursor: url("./cursors/Help.cur"), help;
+.titleBar {
+  text-align: center;
+  padding: 1vmin;
+  border-bottom: 1px solid var(--terminal-border);
+  background-color: var(--terminal-border);
+}
+
+.prompt, .tree {
+  padding: 1vmin 1vmin 0 0;
+  color: #d0d0d0;
+}
+
+.tree {
+  padding-bottom: 1vmin;
+}
+
+.prompt::before {
+  content: "/usr/bin";
+  background-color: #acd4eb;
+  color: var(--terminal-bg);
+  font-weight: 600;
+  display: inline-block;
+  padding: 0.5vmin 3vmin 0.5vmin 0.5vmin;
+  margin-right: 1vmin;
+  clip-path: polygon(0% 0%, 88% 0%, 100% 50%, 88% 100%, 0% 100%);
+}
+
+.blinking {
+  padding-bottom: 1vmin;
+}
+
+.blinking::after {
+  content: ".";
+  color: transparent;
+  background-color: white;
+  display: inline-block;
+  height: 100%;
+  width: 2vmin;
+  animation: blink 1.5s ease infinite;
+}
+
+.treeItem a{
+  margin-left: 1vmin;
+  cursor: url("./cursors/Pointer.cur"), pointer;
+}
+
+@keyframes blink {
+  0% {
+    opacity: 1;
+  }
+  50% {
+    opacity: 0;
+  }
+  100% {
+    opacity: 1;
+  }
 }
 
 @keyframes bar {

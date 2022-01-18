@@ -1,7 +1,6 @@
-@import url('https://fonts.googleapis.com/css2?family=Libre+Barcode+39+Text&family=Roboto+Mono&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Libre+Barcode+39+Text&display=swap');
 /* * * * * * * * * * * * * * * * * * * * * * * * *
- * font-family: 'Libre Barcode 39', cursive;     *
- * font-family: 'Roboto Mono', monospace; *
+ * font-family: 'Libre Barcode 39 Text', cursive;     *
  * * * * * * * * * * * * * * * * * * * * * * * * */
 
 :root {
@@ -15,6 +14,11 @@ html {
   cursor: url("./cursors/Precision.cur"), crosshair;
   text-size-adjust: 0%;
   white-space: nowrap;
+  user-select: none;
+}
+
+::selection {
+  background: transparent;
 }
 
 body, .content {

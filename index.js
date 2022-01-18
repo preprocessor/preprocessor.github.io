@@ -28,25 +28,26 @@ function treeFill() {
 }
 
 async function openTerminal() {
+  document.getElementsByClassName('glitch')[0].removeAttribute("onclick");
+
   var terminal = document.getElementsByClassName('terminal')[0],
       prompt   = document.getElementsByClassName('prompt'),
       tree     = document.getElementsByClassName('tree')[0];
-
 
   terminal.style = '';
   terminal.classList.add('opened');
 
   await waitForMs(1600);
-
   await typeSentence("tree ~/xyz/pages", prompt[1]);
-
   await waitForMs(300);
 
   prompt[1].classList.remove('blinking');
   prompt[1].classList.add('ran');
   await waitForMs(100);
+
   tree.style.opacity = 1;
   await waitForMs(100);
+
   prompt[2].classList.add('blinking');
 }
 

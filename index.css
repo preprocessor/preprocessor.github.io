@@ -46,7 +46,8 @@ body::after, .invertBar, .fixInvertBar, .scanlines {
 
 body::after {
   height: 100vh;
-  box-shadow: inset 0 0 9vmax #000;
+  box-shadow: inset 0 0 9vmax 2vmax rgb0(0, 0, 0, 0.5);
+  filter: blur(10px);
   content: "";
 }
 

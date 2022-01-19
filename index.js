@@ -1,8 +1,9 @@
 function glitchText() {
-  glitchRef = document.getElementsByClassName('glitch')[0];
+  var glitchRef = document.getElementsByClassName('glitch')[0],
+      message   = 'wyspr.xyz'
 
   for (i=0; i < 9; i++) {
-    glitchRef.innerHTML += '<div class="line">wyspr.xyz</div>';
+    glitchRef.innerHTML += '<div class="line">' + message + '</div>';
   }
 }
 
@@ -16,8 +17,7 @@ function treeFill() {
       symbol;
 
   for (let [name, link] of links) {
-
-    if (name != "src") {
+    if (name != 'src') {
       symbol = '├─';
     } else {
       symbol = '└─';
@@ -28,27 +28,36 @@ function treeFill() {
 }
 
 async function openTerminal() {
-  document.getElementsByClassName('glitch')[0].removeAttribute("onclick");
 
-  var terminal = document.getElementsByClassName('terminal')[0],
-      prompt   = document.getElementsByClassName('prompt'),
-      tree     = document.getElementsByClassName('tree')[0];
+  var glitch   = document.getElementsByClassName('glitch')[0],
+      terminal = document.getElementsByClassName('terminal')[0],
+      titlebar = document.getElementsByClassName('titleBar')[0],
+      tree     = document.getElementsByClassName('tree')[0],
+      prompts   = document.getElementsByClassName('prompt'),
+      activePrompt = prompts[1],
+      message  = prompts[0].innerText;
 
+  glitch.removeAttribute("onclick");
+  glitch.style.cursor = 'unset'
   terminal.style = '';
   terminal.classList.add('opened');
 
   await waitForMs(1600);
-  await typeSentence("tree ~/xyz/pages", prompt[1]);
+  titlebar.classList.add('revealed')
+  await waitForMs(156);
+  activePrompt.classList.add('blinking')
+  await waitForMs(364);
+  await typeSentence(message, activePrompt);
   await waitForMs(300);
 
-  prompt[1].classList.remove('blinking');
-  prompt[1].classList.add('ran');
+  activePrompt.classList.remove('blinking');
+  activePrompt.classList.add('ran');
   await waitForMs(100);
 
   tree.style.opacity = 1;
   await waitForMs(100);
 
-  prompt[2].classList.add('blinking');
+  prompts[2].classList.add('blinking');
 }
 
 async function typeSentence(sentence, ref, delay = 75) {

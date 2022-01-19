@@ -1,4 +1,4 @@
-@import url('https://fonts.googleapis.com/css2?family=Libre+Barcode+39+Text&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Libre+Barcode+39+Text&family=Courier+Prime&display=swap');
 /* * * * * * * * * * * * * * * * * * * * * * * * * *
  * font-family: 'Libre Barcode 39 Text', cursive;  *
  * * * * * * * * * * * * * * * * * * * * * * * * * */
@@ -105,7 +105,8 @@ a, a:visited {
 .terminal {
   position: relative;
   color: white;
-  font-family: Courier, monospace;
+  font-family: 'Courier Prime', monospace;
+  /* font-family: Courier, monospace; */
   font-size: 3vmin;
   background-color: var(--terminal-border);
   border: 4px solid var(--terminal-border);

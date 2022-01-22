@@ -1,24 +1,30 @@
 @import url('https://fonts.googleapis.com/css2?family=Libre+Barcode+39+Text&family=Courier+Prime&display=swap');
-/* * * * * * * * * * * * * * * * * * * * * * * * * *
- * font-family: 'Libre Barcode 39 Text', cursive;  *
- * * * * * * * * * * * * * * * * * * * * * * * * * */
+@font-face {
+  font-family: 'Mononoki';
+  src: url('./fonts/mononoki.woff2') format('woff2'),
+       url('./fonts/mononoki.ttf') format('truetype');
+}
+/* * * * * * * * * * * * * * * * * * * * * * * * * * * * *
+ * font-family: 'Libre Barcode 39 Text', cursive;        *
+ * font-family: 'Courier Prime', monospace;              *
+ * * * * * * * * * * * * * * * * * * * * * * * * * * * * */
 
 :root {
   --bg-color: #100815;
   --bar-time: 15s;
   --terminal-bg: #111213;
   --terminal-border: #323232;
-}
-
-html {
-  cursor: url("./cursors/Precision.cur"), crosshair;
-  text-size-adjust: 0%;
-  white-space: nowrap;
-  user-select: none;
+  --terminal-font: #d0d0d0;
+  --tree-box: #9e8cbd;
 }
 
 ::selection {
   background: transparent;
+}
+
+a, a:visited {
+  color: inherit;
+  text-decoration: none;
 }
 
 body, .content {
@@ -30,6 +36,10 @@ body, .content {
   justify-content: center;
   align-items: center;
   flex-direction: column;
+  cursor: url('./cursors/Precision.cur'), crosshair;
+  text-size-adjust: 0%;
+  white-space: nowrap;
+  user-select: none;
 }
 
 body {
@@ -46,15 +56,11 @@ body::after, .invertBar, .fixInvertBar, .scanlines {
 
 body::after {
   height: 100vh;
-  box-shadow: inset 0 0 9vmax 2vmax rgba(0, 0, 0, 0.5);
+  box-shadow: inset 0 0 9vmax 2vmax rgba(0,0,0,0.50);
   filter: blur(10px);
-  content: "";
+  content: '';
 }
 
-a, a:visited {
-  color: inherit;
-  text-decoration: none;
-}
 .line {
   font-family: 'Libre Barcode 39 Text', cursive;
   font-size: 20vmin;
@@ -63,21 +69,20 @@ a, a:visited {
 .glitch {
   position: relative;
   color: #fff;
-  cursor: url("./cursors/Help.cur"), help;
 }
 
 .scanlines {
   background: repeating-linear-gradient(0deg,
     transparent 25%,
     transparent 50%,
-    rgba(255, 255, 255, 0.06) 50%,
-    rgba(255, 255, 255, 0.06) 75%
+    rgba(255,255,255,0.059) 50%,
+    rgba(255,255,255,0.059) 75%
   );
   background-size: 12px 12px;
   height: 100vh;
-  animation: bg var(--bar-time) linear infinite;
+  animation: scanlines var(--bar-time) linear infinite;
 }
-@keyframes bg {
+@keyframes scanlines {
   from { background-position-y: 0; }
   to   { background-position-y: 100%; }
 }
@@ -86,9 +91,9 @@ a, a:visited {
   height: 7px;
   background-color: var(--bg-color);
   filter: invert(1);
-  animation: bar 15s linear infinite;
+  animation: invBar 15s linear infinite;
 }
-@keyframes bar {
+@keyframes invBar {
   from { top: 0; }
   to   { top: 100%; }
 }
@@ -97,86 +102,77 @@ a, a:visited {
   mix-blend-mode: exclusion;
 }
 
-.terminalWrap {
-  display: flex;
-  justify-content: center;
-  align-items: flex-start;
-}
 .terminal {
-  position: relative;
   color: white;
-  font-family: 'Courier Prime', monospace;
-  /* font-family: Courier, monospace; */
+  font-family: 'Courier Prime', Courier, monospace;
   font-size: 3vmin;
-  background-color: var(--terminal-border);
+  line-height: 3.4vmin;
+  background-color: var(--terminal-bg);
   border: 4px solid var(--terminal-border);
-  /* height: 0;
-  width: 0;
-  overflow: hidden; */
+  transform-origin: 50% 0;
 }
 
 .titleBar {
   text-align: center;
   padding: 1vmin;
-  border-bottom: 1px solid var(--terminal-border);
+  /* border-bottom: 1px solid var(--terminal-border); */
   background-color: var(--terminal-border);
   color: transparent;
 }
 
 .titleBar.revealed {
-  color: #fff;
+  color: white;
 }
 
 .prompt, .tree {
-  padding: 1vmin 1vmin 0 0;
-  color: #d0d0d0;
+  padding: 0.5vmin 1vmin 0.5vmin 0;
+  color: var(--terminal-font);
   opacity: 0;
 }
 
-.blinking, .ran {
+.blinking, .prompt.ran {
   opacity: 1;
 }
 
-.tree {
-  padding-bottom: 1vmin;
-}
-
 .treeHead, .treeItem {
-  color: #9e8cbd;
+  color: var(--tree-box);
 }
 
 .treeHead i {
-  color: #fff;
+  color: white;
 }
 
 .prompt::before {
-  content: "/usr/bin";
+  content: '/usr/bin';
   background-color: #acd4eb;
   color: var(--terminal-bg);
   font-weight: 600;
   display: inline-block;
-  padding: 0.5vmin 3vmin 0.5vmin 0.5vmin;
+  padding: 0.5vmin 2vmin 0.1vmin 0.5vmin;
   margin-right: 1vmin;
-  clip-path: polygon(0% 0%, 88% 0%, 100% 50%, 88% 100%, 0% 100%);
+  clip-path: polygon(0% 0%, 90% 0%, 100% 50%, 90% 100%, 0% 100%);
 }
 
 .blinking::after {
-  content: ".";
+  position: relative;
+  top: -0.1vmin;
+  content: '.';
   color: transparent;
   background-color: white;
   display: inline-block;
   height: 100%;
   width: 2vmin;
+  padding-top: 0.2vmin;
   animation: blink 1s ease infinite;
 }
 @keyframes blink {
-  0%, 100%  { background-color: rgba(255, 255, 255, 1); }
+  from, to  { background-color: white; }
   50%       { background-color: transparent; }
 }
 
 .treeItem a{
   margin-left: 1vmin;
-  cursor: url("./cursors/Pointer.cur"), pointer;
+  cursor: url('./cursors/Pointer.cur'), pointer;
   color: #C04848;
 }
 
@@ -190,7 +186,6 @@ a, a:visited {
 }
 @keyframes open {
   0% {
-    background-color: var(--terminal-border);
     transform: scale(1%,0);
   }
   49% {
@@ -208,11 +203,11 @@ a, a:visited {
 }
 
 .prompt.ran {
-  animation: ran 0.2s steps(2) 1;
+  animation: ran 0.15s steps(2) 1;
 }
 @keyframes ran {
   from {
-    color: #d0d0d0;
+    color: var(--terminal-font);
     text-shadow: none;
   }
   to {

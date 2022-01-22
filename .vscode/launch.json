@@ -2,21 +2,22 @@
   "version": "0.2.0",
   "configurations": [
     {
-      "name": "Chromimum",
+      "name": "Chromium",
+      "type": "chrome",
       "request": "launch",
       "reAttach": true,
-      "type": "chrome",
       "runtimeExecutable": "C:\\Program Files\\Chromium\\Application\\Chrome.exe",
       "url": "${fileDirname}/${fileBasenameNoExtension}.html",
       "webRoot": "${fileDirname}"
     },
     {
-        "name": "Firefox",
-        "type": "firefox",
-        "request": "launch",
-        "reAttach": true,
-        "file": "${fileDirname}/${fileBasenameNoExtension}.html",
-        "reloadOnChange": "${workspaceFolder}/**/*.*"
+      "name": "Firefox",
+      "type": "firefox",
+      "request": "launch",
+      "reAttach": true,
+      "file": "${fileDirname}/${fileBasenameNoExtension}.html",
+      "reloadOnChange": "${workspaceFolder}/**/*.*",
+      "clearConsoleOnReload": true
     }
   ]
 }

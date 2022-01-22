@@ -31,19 +31,18 @@
   <body onload="init()">
     <div class="fixInvertBar"></div>
     <div class="content">
-      <div class="glitch" onclick="openTerminal()"></div>
-      <div class="terminalWrap">
-        <div class="terminal" style="transform: scale(0,0);">
-          <div class="titleBar"><span>S</span>hell</div>
-          <div class="prompt blinking fuk">tree ~/xyz/pages</div><!-- oh dear god what a bad solution 😅-->
-          <div class="prompt"></div>
-          <div class="tree" >
-            <div class="treeHead">&nbsp;┌───────────┐
-                            <br />&nbsp;│<i>~/xyz/pages</i>│
-                            <br />&nbsp;└┬──────────┘</div>
-          </div>
-          <div class="prompt"></div>
+      <div class="glitch" style="cursor: url('./cursors/Help.cur'), help;" onclick="openTerminal()"></div>
+
+      <div class="terminal" style="transform: scale(0,0);">
+        <div class="titleBar"><span>S</span>hell</div>
+        <div class="prompt blinking fuk">tree ~/xyz/pages</div><!-- oh dear god what a bad solution 😅-->
+        <div class="prompt"></div>
+        <div class="tree">
+          <div class="treeHead">&nbsp;┌───────────┐
+                          <br />&nbsp;│~/xyz/pages│
+                          <br />&nbsp;└┬──────────┘</div>
         </div>
+        <div class="prompt"></div>
       </div>
     </div>
     <div class="scanlines"></div>

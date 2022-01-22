@@ -43,9 +43,9 @@ async function openTerminal() {
   terminal.classList.add('opened');
 
   await waitForMs(1600);
-  titlebar.classList.add('revealed')
+  titlebar.classList.add('revealed');
   await waitForMs(156);
-  activePrompt.classList.add('blinking')
+  activePrompt.classList.add('blinking');
   await waitForMs(364);
   await typeSentence(message, activePrompt);
   await waitForMs(300);

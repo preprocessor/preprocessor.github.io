@@ -208,10 +208,17 @@ a, a:visited {
 }
 
 .prompt.ran {
-  animation: ran 1s ease 1 forwards;
+  animation: ran 0.2s steps(2) 1;
 }
 @keyframes ran {
-
+  from {
+    color: #d0d0d0;
+    text-shadow: none;
+  }
+  to {
+    color: white;
+   	text-shadow: 3px 3px 20px rgba(255, 255, 255, 0.5);
+  }
 }
 
 

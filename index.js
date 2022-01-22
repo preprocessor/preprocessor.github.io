@@ -29,13 +29,13 @@ function treeFill() {
 
 async function openTerminal() {
 
-  var glitch   = document.getElementsByClassName('glitch')[0],
-      terminal = document.getElementsByClassName('terminal')[0],
-      titlebar = document.getElementsByClassName('titleBar')[0],
-      tree     = document.getElementsByClassName('tree')[0],
-      prompts   = document.getElementsByClassName('prompt'),
+  var glitch       = document.getElementsByClassName('glitch')[0],
+      terminal     = document.getElementsByClassName('terminal')[0],
+      titlebar     = document.getElementsByClassName('titleBar')[0],
+      tree         = document.getElementsByClassName('tree')[0],
+      prompts      = document.getElementsByClassName('prompt'),
       activePrompt = prompts[1],
-      message  = prompts[0].innerText;
+      message      = prompts[0].innerText;
 
   glitch.removeAttribute("onclick");
   glitch.style.cursor = 'unset'

@@ -28,8 +28,8 @@ function levelMap(start, end) {
 
 function addRow(c1, c2, table) {
   let newRow = table.insertRow(-1), // create a new row at the end of the table
-      cell1 = newRow.insertCell(0),
-      cell2 = newRow.insertCell(1); // insert the cells into the row
+      cell1  = newRow.insertCell(0),
+      cell2  = newRow.insertCell(1); // insert the cells into the row
 
   cell1.innerHTML = c1;
   cell2.innerHTML = c2;             // populate the cells
@@ -43,8 +43,8 @@ function tableWipe(table) {
 
 function tableGen() {
   // using parseInt() strips decimals and returns NaN if given a string
-  var start = parseInt(document.getElementById("startLvl").value),
-      end   = parseInt(document.getElementById("goalLvl").value),
+  var start    = parseInt(document.getElementById("startLvl").value),
+      end      = parseInt(document.getElementById("goalLvl").value),
       tableRef = document.getElementById('daTable');
 
   if ( start && end && start >= 1 && start < end && end <= 802 ) { // makes sure that inputs exist and make sense
@@ -52,10 +52,11 @@ function tableGen() {
     tableWipe(tableRef);                                           // clear the table if its populated
 
     let values = levelMap(start, end),
-        total = 0;
+        total  = 0;
 
     for (let [id, value] of values) {
       total += value;
+
       addRow(id + "<span>→</span>" + (id+1), value.toLocaleString(), tableRef);
     }
 

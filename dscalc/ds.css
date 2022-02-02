@@ -7,6 +7,8 @@
   --table-alt-border: rgb(171, 150, 111);
   --hover-bg: rgba(199, 199, 199, 0.4);
   --alt-bg: rgb(34, 34, 34);
+  --table-font-n: 14px;
+  --table-font-l: 18px;
 }
 
 
@@ -26,23 +28,33 @@ h1 {
   color: var(--title-color);
   margin-bottom: 0;
   white-space: nowrap;
+  font-size: 4vmin;
 }
 
 h4 {
   color: var(--subtitle-color);
-  margin-top: 0;
+  margin: 0;
+  font-size: 2.5vmin;
 }
 
 form {
   display: flex;
-  margin-bottom: 20px;
+  flex-direction: column;
+  align-items: center;
+  margin-bottom: 2vmin;
   width: 90%;
-  min-height: 40px;
+  /* min-height: 40px; */
 }
+
+form div {
+  display: flex;
+}
+
+
 
 table {
   border-spacing: 0;
-  font-size: 14px;
+  font-size: var(--table-font-n);
   margin-bottom: 30px;
   border: 2px solid var(--table-alt-border);
 }
@@ -56,7 +68,7 @@ td, th {
 }
 
 th {
-  font-size: 18px;
+  font-size: var(--table-font-l);
   border-bottom: 1px solid var(--table-alt-border);
 }
 
@@ -64,7 +76,7 @@ th:last-of-type {
   border-left-width: 1px;
 }
 
-tr:last-of-type td { 
+tr:last-of-type td {
   border-top: 1px solid var(--table-alt-border);
 }
 
@@ -82,7 +94,7 @@ tr:nth-last-of-type(2) td {
 
 tr:last-of-type {
   color: var(--title-color);
-  font-size: 18px;
+  font-size: var(--table-font-l);
   font-weight: bold;
 }
 
@@ -111,6 +123,21 @@ button, input {
   padding: 6px 12px;
   flex: 1 0 0;
   text-align: center;
+}
+
+input[type="radio"] {
+  display: none;
+}
+
+label {
+  font-size: 4vmin;
+  padding: 10px;
+  margin: 1vmin;
+}
+
+input[type="radio"]:checked+label {
+  color: #dd7700;
+  text-shadow: 0px 0px 10px var(--title-color);
 }
 
 #startLvl {

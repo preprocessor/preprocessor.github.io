@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <title>Dark Souls Level Calculator</title>
+    <meta name="description" content="">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Cormorant+SC">
+    <link rel="stylesheet" href="ds.css">
+    <script type="text/javascript" src="ds.js"></script>
+    <script type="text/javascript" src="ds2_levels.js"></script>
+    <!-- Global site tag (gtag.js) - Google Analytics -->
+    <script async src="https://www.googletagmanager.com/gtag/js?id=G-C3EGE36W7Y"></script>
+    <script>
+      window.dataLayer = window.dataLayer || [];
+      function gtag(){dataLayer.push(arguments);}
+      gtag('js', new Date());
+
+      gtag('config', 'G-C3EGE36W7Y');
+    </script>
+  </head>
+  <body onload="enterSubmit()">
+    <h1>Dark Souls Level Calculator</h1>
+    <h4>by wyspr</h4>
+    <form autocomplete="off">
+      <div class="rad">
+        <input type="radio" name="game" id="1" value="1"><label for="1">I</label>
+        <input type="radio" name="game" id="2" value="2"><label for="2">II</label>
+        <input type="radio" name="game" id="3" value="3"><label for="3">III</label>
+      </div>
+      <div class="txt">
+        <input placeholder="Current Level" type="text" id="startLvl" />
+        <input placeholder="Final Level"   type="text" id="goalLvl" />
+        <button type="button" onClick="tableGen()">Calculate</button>
+      </div>
+    </form>
+    <table id="daTable" style="display: none;">
+      <tr>
+        <th>Level</th>
+        <th>Souls Required</th>
+      </tr>
+    </table>
+  </body>
+</html>

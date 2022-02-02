@@ -64,7 +64,6 @@ function tableGen() {
     }
   }
 
-
   if ( start && end && start >= 1 && start < end && end <= 802 ) { // makes sure that inputs exist and make sense
     tableRef.style.display = 'table';                              // unhide the table on first run
     tableWipe(tableRef);                                           // clear the table if its populated
@@ -90,4 +89,8 @@ function enterSubmit() {
       if (e.key === 'Enter') {tableGen();}
     })
   })
+}
+
+function init() {
+  enterSubmit();
 }
